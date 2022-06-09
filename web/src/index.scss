@@ -1,5 +1,5 @@
-@use "./styles//vars";
-@use "./styles/theme";
+@use "./vars//vars";
+@use "./vars/theme";
 
 /* Box sizing rules */
 *,
@@ -101,6 +101,38 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  row-gap: 20px;
+  padding: 3rem 1rem;
+}
+form .submit-button {
+  min-height: 2rem;
+  max-width: 160px;
+}
+form .form-error {
+  padding: 2rem 1rem;
+  background-color:lightyellow;
+  color: red;
+}
+.form-field-container {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  min-height: 2rem;
+}
+input.error {
+  outline-color: red;
+}
+
+.error {
+  color: red;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
