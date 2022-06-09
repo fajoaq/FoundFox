@@ -1,5 +1,5 @@
-@use "../../styles/theme";
-@use "../../styles/spacing";
+@use "../../vars/theme";
+@use "../../vars/spacing";
 
 .container {
   background-color: theme.$main;
