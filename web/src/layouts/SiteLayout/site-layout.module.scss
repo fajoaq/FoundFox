@@ -1,0 +1,7 @@
+@use "../../styles/theme";
+@use "../../styles/spacing";
+
+.container {
+  background-color: theme.$main;
+  padding: spacing.$medium spacing.$xsmall;
+}
