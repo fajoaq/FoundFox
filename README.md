@@ -1,4 +1,5 @@
 # README
+redeploy
 
 Welcome to [RedwoodJS](https://redwoodjs.com)!
 
