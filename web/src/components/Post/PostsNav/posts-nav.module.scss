@@ -1,0 +1,10 @@
+@use "src/vars/breakpoints.scss";
+@use "src/vars/spacing.scss";
+
+.container {
+  display: flex;
+  justify-content: end;
+  max-width: breakpoints.$lg;
+  margin: 0 auto;
+  padding: spacing.$small spacing.$xsmall
+}

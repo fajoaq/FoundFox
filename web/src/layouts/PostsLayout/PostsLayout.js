@@ -2,6 +2,8 @@ import { Link, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
 import { Toaster } from '@redwoodjs/web/toast'
 
+import PostsNav from 'src/components/Post/PostsNav/PostsNav'
+
 const PostsLayout = ({ children }) => {
   const { isAuthenticated, currentUser, logOut } = useAuth()
   return (
@@ -36,6 +38,7 @@ const PostsLayout = ({ children }) => {
             </li>
           </ul>
         </nav>
+        {isAuthenticated && <PostsNav />}
       </header>
       <main>{children}</main>
     </>
