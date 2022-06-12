@@ -101,16 +101,19 @@ export const handler = async (event, context) => {
     //
     // If this returns anything else, it will be returned by the
     // `signUp()` function in the form of: `{ message: 'String here' }`.
-    handler: ({ username, hashedPassword, salt, userAttributes }) => {
-      return db.user.create({
-        data: {
-          email: username,
-          hashedPassword: hashedPassword,
-          salt: salt,
-          // name: userAttributes.name
-        },
-      })
-    },
+    //handler: ({ username, hashedPassword, salt, userAttributes }) => ({
+    handler: () => ({
+      // DISABLED, for now
+      data: {},
+      //return db.user.create({
+      //  data: {
+      //    email: username,
+      //    hashedPassword: hashedPassword,
+      //    salt: salt,
+      //    // name: userAttributes.name
+      // },
+      // })
+    }),
 
     errors: {
       // `field` will be either "username" or "password"
