@@ -1,46 +1,33 @@
+import styles from './posts-layout.module.scss'
+import globalStyles from '/src/vars/_global.module.scss'
 import { Link, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
 import { Toaster } from '@redwoodjs/web/toast'
 
+import Nav from 'src/components/Nav/Nav'
 import PostsNav from 'src/components/Post/PostsNav/PostsNav'
 
 const PostsLayout = ({ children }) => {
-  const { isAuthenticated, currentUser, logOut } = useAuth()
+  const { isAuthenticated } = useAuth()
   return (
     <>
       <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-      <header>
-        <div className="flex-between">
-          <h1>
-            <Link to={routes.home()}>Redwood Blog</Link>
-          </h1>
-          {isAuthenticated ? (
-            <div>
-              <span>Logged in as {currentUser.email}</span>{' '}
-              <button type="button" onClick={logOut}>
-                Logout
-              </button>
-            </div>
-          ) : (
-            <Link to={routes.login()}>Login</Link>
-          )}
+      <header className={styles.container}>
+        <div className={globalStyles.constraint}>
+          {/* header */}
+          <div>
+            <h1>
+              <Link to={routes.home()}>FoundFox Admin</Link>
+            </h1>
+          </div>
+          {/* main navigation */}
+          <Nav />
+          {/* admin panel */}
+          {isAuthenticated && <PostsNav />}
         </div>
-        <nav>
-          <ul>
-            <li>
-              <Link to={routes.home()}>Home</Link>
-            </li>
-            <li>
-              <Link to={routes.about()}>About</Link>
-            </li>
-            <li>
-              <Link to={routes.contact()}>Contact</Link>
-            </li>
-          </ul>
-        </nav>
-        {isAuthenticated && <PostsNav />}
       </header>
-      <main>{children}</main>
+      {/* content */}
+      <main className={globalStyles.constraint}>{children}</main>{' '}
     </>
   )
 }

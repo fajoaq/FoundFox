@@ -1,3 +1,6 @@
-.test {
-  background-color: green;
+@use "./breakpoints.scss";
+
+.constraint {
+  max-width: breakpoints.$lg;
+  margin: 0 auto;
 }

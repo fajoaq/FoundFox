@@ -1,27 +1,30 @@
 import styles from './site-layout.module.scss'
+import globalStyles from 'src/vars/_global.module.scss'
 import { Link, routes } from '@redwoodjs/router'
+import { useAuth } from '@redwoodjs/auth'
 
 import { CONSTANTS } from 'src/utils/constants'
+import Nav from 'src/components/Nav/Nav'
+import PostsNav from 'src/components/Post/PostsNav/PostsNav'
 
 const SiteLayout = ({ children }) => {
+  const { isAuthenticated } = useAuth()
   return (
     <>
       <header className={styles.container}>
-        <Link to={routes.home()}>
-          <h1>{CONSTANTS.SITE_NAME}</h1>
-        </Link>
-        <nav>
-          <ul>
-            <li>
-              <Link to={routes.about()}>About</Link>
-            </li>
-            <li>
-              <Link to={routes.contact()}>Contact</Link>
-            </li>
-          </ul>
-        </nav>
+        {/* header */}
+        <div className={globalStyles.constraint}>
+          <Link to={routes.home()}>
+            <h1>{CONSTANTS.SITE_NAME}</h1>
+          </Link>
+          {/* main navigation */}
+          <Nav />
+          {/* admin panel */}
+          {isAuthenticated && <PostsNav />}
+        </div>
       </header>
-      <main>{children}</main>
+      {/* content */}
+      <main className={globalStyles.constraint}>{children}</main>
     </>
   )
 }

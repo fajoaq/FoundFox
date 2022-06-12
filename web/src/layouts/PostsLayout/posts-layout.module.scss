@@ -1,0 +1,7 @@
+@use "src/vars/theme.scss";
+@use "src/vars/spacing.scss";
+
+.container {
+  background-color: theme.$main;
+  padding: spacing.$medium spacing.$xsmall;
+}
